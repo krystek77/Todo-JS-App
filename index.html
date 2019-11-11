@@ -14,9 +14,26 @@
 	</head>
 	<body>
 		<div class="todo-application">
-			<header class="todo-application--header"></header>
-			<div class="todo-application--task-lists"></div>
-			<div class="todo-application--input"></div>
+			<header class="todo-application--header">
+				<i class="fa fa-circle-notch icon icon__clear todo-application--icon"></i>
+				<div class="todo-application--date">Wednesday,Mar 13</div>
+			</header>
+			<ul class="todo-application--task-lists">
+				<li class="todo-application--task">
+					<i class="fa fa-check-circle icon icon__done todo-application--icon"></i>
+					<p class="todo-application--content">Learn react</p>
+					<i class="fa fa-trash-alt icon icon__trash todo-application--icon"></i>
+				</li>
+				<li class="todo-application--task">
+					<i class="fa fa-check-circle icon icon__done todo-application--icon"></i>
+					<p class="todo-application--content">Start running today</p>
+					<i class="fa fa-trash-alt icon icon__trash todo-application--icon"></i>
+				</li>
+			</ul>
+			<div class="todo-application--control">
+				<i class="fa fa-plus-circle icon icon__add todo-application--icon"></i>
+				<input type="text" placeholder="Add task" value="" class="input input__text todo-application--input" />
+			</div>
 		</div>
 		<script src="./js/todo.js"></script>
 	</body>
