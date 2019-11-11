@@ -1,0 +1,119 @@
+$color-red: #e7491d;
+$color-blue: #39a6f3;
+$color-yellow: #ffc934;
+$color-green: #a7db93;
+$color-black: #1d1e1f;
+$color-white: #ffffff;
+$color-brown :#423102;
+$padding: 15px;
+
+body {
+	margin: 0;
+	padding: $padding;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	background-color: $color-black;
+}
+.todo-application {
+	margin: 0 auto;
+	background-color: $color-white;
+	width: 360px;
+	min-width: 320px;
+	min-height: 640px;
+	display: flex;
+	flex-direction: column;
+	&--header {
+		box-sizing: border-box;
+		height: 150px;
+		padding: $padding;
+		position: relative;
+		background-color: $color-blue;
+		background-image: url('../images/bg.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center top;
+	}
+	&--header .todo-application--icon {
+		position: absolute;
+		right: $padding;
+		color: $color-brown;
+		font-size: 2rem;
+	}
+	&--date {
+		font-family: Oswald, sans-serif;
+		font-weight: 500;
+		font-size: 1.2rem;
+		position: absolute;
+		bottom: 0;
+		padding: $padding $padding;
+		color: $color-yellow;
+		background-color: $color-brown;
+		border-top-left-radius: 0.4rem;
+		border-top-right-radius: 0.4rem;
+	}
+	&--task-lists {
+		flex-grow: 1;
+		list-style-type: none;
+		padding-left: 0;
+		font-family: Montserrat, sans-serif;
+		font-weight: 300;
+        margin-top: 0;
+        .todo-application--icon {
+            
+        }
+	}
+	&--task {
+		display: flex;
+		align-items: center;
+		padding: $padding;
+		border-bottom: 1px solid $color-green;
+	}
+	&--task .todo-application--icon {
+		font-size: 1.3rem;
+	}
+	&--content {
+		margin: 0;
+		flex-grow: 1;
+		padding-left: $padding;
+		padding-right: $padding;
+		font-size: 1.2rem;
+	}
+	&--control {
+		padding: $padding;
+		border-top: 1px solid darken($color: $color-green, $amount: 30);
+		display: flex;
+		align-items: center;
+		background-color: $color-green;
+	}
+	&--control .todo-application--input {
+		width: 100%;
+		border: 1px solid darken($color: $color-green, $amount: 30);
+		border-radius: 0.2rem;
+		color: darken($color: $color-green, $amount: 50);
+	}
+	&--control .todo-application--input::-webkit-input-placeholder {
+		color: $color-green;
+		font-size: 1.2rem;
+		font-family: Montserrat, sans-serif;
+		font-weight: 300;
+	}
+	&--control .todo-application--icon {
+		padding-right: $padding;
+		color: darken($color: $color-green, $amount: 30);
+	}
+}
+.icon {
+	cursor: pointer;
+	font-size: 2rem;
+	// &__done {
+	// 	color: lighten($color: $color-black, $amount: 80);
+	// }
+}
+.input {
+	outline: none;
+	padding: $padding;
+	font-size: 1.2rem;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+}
