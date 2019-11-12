@@ -17,7 +17,10 @@ function Task(content, done = false, trash = false) {
 }
 
 Task.prototype.toString = function() {
-	console.log(`Task: ID=${this.id};content=${this.content};done=${this.done};trash=${this.trash}`);
+	console.log(`
+		Task: ID=${this.id};
+		content=${this.content};
+		done=${this.done};
+		trash=${this.trash}
+		`);
 };
-
-
