@@ -5,8 +5,8 @@ const addIcon = document.querySelector('.icon__add');
 const input = document.querySelector('.todo-application--input');
 const list = new Array();
 
-const CHECK = 'fas fa-check-circle';
-const UNCHECK = 'fa fa-circle';
+const CHECK = 'fa-check-circle';
+const UNCHECK = 'fa-circle';
 const LINE_THROUGH = 'line-through';
 
 /**
@@ -51,19 +51,13 @@ function addTask(task) {
 
 	const element = `
 		<li class="todo-application--task">
-			<i class="fa ${DONE} icon icon__done todo-application--icon" id="${id}"></i>
+			<i class="fas fa ${DONE} icon icon__done todo-application--icon" id="${id}" job="done"></i>
 			<p class="todo-application--content ${LINE}">${content}</p>
-			<i class="fa fa-trash-alt icon icon__trash todo-application--icon" id="${id}"></i>
+			<i class="fa fa-trash-alt icon icon__trash todo-application--icon" id="${id}" job="trash"></i>
 		</li>`;
 
 	taskList.insertAdjacentHTML(position, element);
 }
-
-addIcon.addEventListener('click', function() {
-	console.log('ADD TASK ... ');
-	const task = new Task('Go to job', true, false);
-	addTask(task);
-});
 
 document.addEventListener('keyup', function(event) {
 	const keyCode = event.keyCode;
@@ -78,3 +72,40 @@ document.addEventListener('keyup', function(event) {
 		}
 	}
 });
+
+taskList.addEventListener('click', function(event) {
+	if (event.target === this || event.target.localName === 'p') return;
+
+	const element = event.target;
+	const elementJob = element.attributes.job.value;
+
+	if (elementJob === 'done') {
+		completeTask(element);
+	} else if (elementJob === 'trash') {
+		console.log('Remove task ... ');
+		removeTask(element);
+	}
+});
+
+/**
+ *
+ * @param {HTMLElement} element
+ */
+function completeTask(element) {
+	console.log(element);
+	const index = element.id - 1;
+	element.classList.toggle(UNCHECK);
+	element.classList.toggle(CHECK);
+	element.nextElementSibling.classList.toggle(LINE_THROUGH);
+	list[index].done = list[index].done ? false : true;
+}
+
+/**
+ *
+ * @param {HTMLElement} element
+ */
+function removeTask(element) {
+	const index = element.id - 1;
+	element.parentNode.parentNode.removeChild(element.parentNode);
+	list[index].trash = true;
+}
