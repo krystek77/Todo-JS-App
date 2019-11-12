@@ -85,6 +85,8 @@ taskList.addEventListener('click', function(event) {
 		console.log('Remove task ... ');
 		removeTask(element);
 	}
+	//update localstorage
+	localStorage.setItem('TODO', JSON.stringify(list));
 });
 
 /**
