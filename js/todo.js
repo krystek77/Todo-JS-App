@@ -3,6 +3,7 @@ const addIcon = document.querySelector(".icon__add");
 const input = document.querySelector(".todo-application--input");
 const date = document.querySelector(".todo-application--date");
 const clear = document.querySelector(".icon__clear");
+const addBtn = document.querySelector(".icon__add");
 
 const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle";
@@ -92,6 +93,26 @@ function addTask(task) {
 
   taskList.insertAdjacentHTML(position, element);
 }
+/**
+ * Add task by add button
+ * 
+ */
+function add() {
+  console.log("Add task by add button");
+  const value = input.value;
+  if (value) {
+    const content = value;
+    const task = new Task(value);
+    addTask(task);
+    list.push(task);
+    input.value = "";
+  }
+
+
+  localStorage.setItem("TODO", JSON.stringify(list));
+}
+
+addBtn.addEventListener('click', add);
 
 document.addEventListener("keyup", function (event) {
   const keyCode = event.keyCode;
@@ -108,6 +129,8 @@ document.addEventListener("keyup", function (event) {
 
   localStorage.setItem("TODO", JSON.stringify(list));
 });
+
+
 
 taskList.addEventListener("click", function (event) {
   if (event.target === this || event.target.localName === "p") return;
