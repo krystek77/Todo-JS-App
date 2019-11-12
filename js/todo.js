@@ -1,8 +1,13 @@
 let id = 0;
+
 const taskList = document.querySelector('.todo-application--task-lists');
 const addIcon = document.querySelector('.icon__add');
 const input = document.querySelector('.todo-application--input');
+const list = new Array();
 
+const CHECK = 'fas fa-check-circle';
+const UNCHECK = 'fa fa-circle';
+const LINE_THROUGH = 'line-through';
 
 /**
  * Create Tsk object
@@ -39,10 +44,6 @@ function addTask(task) {
 	const content = task.content;
 	const id = task.id;
 
-	const CHECK = 'fas fa-check-circle';
-	const UNCHECK = 'fa fa-circle';
-	const LINE_THROUGH = 'line-through';
-
 	const DONE = done ? CHECK : UNCHECK;
 	const LINE = done ? LINE_THROUGH : '';
 
@@ -62,4 +63,18 @@ addIcon.addEventListener('click', function() {
 	console.log('ADD TASK ... ');
 	const task = new Task('Go to job', true, false);
 	addTask(task);
+});
+
+document.addEventListener('keyup', function(event) {
+	const keyCode = event.keyCode;
+	if (keyCode === 13) {
+		const value = input.value;
+		if (value) {
+			const content = value;
+			const task = new Task(value);
+			addTask(task);
+			list.push(task);
+			input.value = '';
+		}
+	}
 });
