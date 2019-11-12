@@ -3,6 +3,8 @@ let id = 0;
 const taskList = document.querySelector('.todo-application--task-lists');
 const addIcon = document.querySelector('.icon__add');
 const input = document.querySelector('.todo-application--input');
+const date = document.querySelector('.todo-application--date');
+
 const list = new Array();
 
 const CHECK = 'fa-check-circle';
@@ -33,6 +35,23 @@ Task.prototype.toString = function() {
 		trash=${this.trash}
 		`);
 };
+/**
+ * Sets current data
+ *
+ * @param {HTMLElement} element
+ */
+function setDate(element) {
+	const options = {
+		weekday: 'long',
+		month: 'short',
+		day: 'numeric',
+	};
+	const today = new Date();
+	element.innerHTML = today.toLocaleDateString('pl-PL', options);
+}
+
+setDate(date);
+
 /**
  * Adds task to list of tasks after last child
  *
