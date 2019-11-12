@@ -1,6 +1,8 @@
 let id = 0;
 const taskList = document.querySelector('.todo-application--task-lists');
 const addIcon = document.querySelector('.icon__add');
+const input = document.querySelector('.todo-application--input');
+
 
 /**
  * Create Tsk object
@@ -55,3 +57,9 @@ function addTask(task) {
 
 	taskList.insertAdjacentHTML(position, element);
 }
+
+addIcon.addEventListener('click', function() {
+	console.log('ADD TASK ... ');
+	const task = new Task('Go to job', true, false);
+	addTask(task);
+});
