@@ -39,14 +39,17 @@ function addTask(task) {
 
 	const CHECK = 'fas fa-check-circle';
 	const UNCHECK = 'fa fa-circle';
+	const LINE_THROUGH = 'line-through';
+
 	const DONE = done ? CHECK : UNCHECK;
+	const LINE = done ? LINE_THROUGH : '';
 
 	const position = 'beforeend';
 
 	const element = `
 		<li class="todo-application--task">
 			<i class="fa ${DONE} icon icon__done todo-application--icon" id="${id}"></i>
-			<p class="todo-application--content">${content}</p>
+			<p class="todo-application--content ${LINE}">${content}</p>
 			<i class="fa fa-trash-alt icon icon__trash todo-application--icon" id="${id}"></i>
 		</li>`;
 
