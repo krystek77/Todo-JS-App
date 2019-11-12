@@ -120,6 +120,7 @@ taskList.addEventListener("click", function (event) {
   } else if (elementJob === "trash") {
     console.log("Remove task ... ");
     removeTask(element);
+    removeFromList(element);
   }
   //update localstorage
   localStorage.setItem("TODO", JSON.stringify(list));
@@ -151,5 +152,18 @@ function removeTask(element) {
 clear.addEventListener("click", function (event) {
   localStorage.clear();
   location.reload();
-  
+
 });
+/**
+ * Remove from list
+ * 
+ * @param {HTML Element} element 
+ */
+function removeFromList(element) {
+  const index = element.id;
+  const newList = Array.from(list).filter((item) => {
+    return item.id != index;
+  })
+  list = [...newList];
+  console.log(list);
+}
