@@ -4,7 +4,7 @@ $color-yellow: #ffc934;
 $color-green: #a7db93;
 $color-black: #1d1e1f;
 $color-white: #ffffff;
-$color-brown :#423102;
+$color-brown: #423102;
 $padding: 15px;
 
 body {
@@ -58,10 +58,13 @@ body {
 		padding-left: 0;
 		font-family: Montserrat, sans-serif;
 		font-weight: 300;
-        margin-top: 0;
-        .todo-application--icon {
-            
-        }
+		margin-top: 0;
+		.icon.fa-circle {
+			color: lighten($color: $color-black, $amount: 60);
+		}
+		.icon.fa-check-circle {
+			color: darken($color: $color-green, $amount: 30);
+		}
 	}
 	&--task {
 		display: flex;
@@ -106,9 +109,6 @@ body {
 .icon {
 	cursor: pointer;
 	font-size: 2rem;
-	// &__done {
-	// 	color: lighten($color: $color-black, $amount: 80);
-	// }
 }
 .input {
 	outline: none;
